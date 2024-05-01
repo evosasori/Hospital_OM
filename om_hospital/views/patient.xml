@@ -1,56 +1,79 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <data>
-    <!-- hospital.patient tree view -->
-    <record id="hospital_patient_view_tree" model="ir.ui.view">
-        <field name="name">hospital.patient.view.tree</field>
-        <field name="model">hospital.patient</field>
-        <field name="arch" type="xml">
-            <tree>
-                <!-- Add your fields here -->
-                <field name="name"/>
-                <field name="umur"/>
-                <field name="jenis_kel"/>
-            </tree>
-        </field>
-    </record>
-        <!-- hospital.patient form view -->
-        <record id="hospital_patient_view_form" model="ir.ui.view">
-            <field name="name">hospital.patient.view.form</field>
-            <field name="model">hospital.patient</field>
-            <field name="arch" type="xml">
-                <form string="">
-                    <sheet>
-                        <group>
-                            <!-- Add your fields here -->
-                            <field name="name"/>
-                <field name="umur"/>
-                <field name="jenis_kel"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+<data>
+<!-- hospital.patient tree view -->
+<record id="hospital_patient_view_tree" model="ir.ui.view">
+    <field name="name">hospital.patient.view.tree</field>
+    <field name="model">hospital.patient</field>
+    <field name="arch" type="xml">
+        <tree>
+            <!-- Add your fields here -->
+            <field name="name" string="Nama"/>
+            <field name="ref"/>
+            <field name="umur"/>
+            <field name="jenis_kel"/>
+        </tree>
+    </field>
+</record>
+<!-- hospital.patient form view -->
+<record id="hospital_patient_view_form" model="ir.ui.view">
+    <field name="name">hospital.patient.view.form</field>
+    <field name="model">hospital.patient</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+            <group name="pasien" string="Data Pasien">
+                <group>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="umur"/>
+                </group>
+                <group>
+                    <field name="ref"/>
+                    <field name="jenis_kel"/>
+                </group> 
+            </group>
+            </sheet>
+        </form>
+    </field>
+</record>
 
-        <!-- hospital.patient action window -->
-        <record id="hospital_patient_action" model="ir.actions.act_window">
-            <field name="name">Pasien</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">hospital.patient</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    <!-- Add Text Here -->
-                </p><p>
-                    <!-- More details about what a user can do with this object will be OK --> 
-                
-                </p>
-            </field>
-        </record>
-    <!-- This Menu Item Must have a parent -->
-<menuitem id="hospital_menu_categ" name="Hospital" parent="hospital_menu_root" sequence="10"/>
-<!-- This Menu Item must have a parent and an action -->
-<menuitem id="hospital_menu_act" name="RS" parent="hospital_menu_categ" action="hospital_patient_action" sequence="1"/>
+<!-- hospital.patient search view -->
+<record id="hospital_patient_view_search" model="ir.ui.view">
+    <field name="name">hospital.patient.view.search</field>
+    <field name="model">hospital.patient</field>
+    <field name="arch" type="xml">
+        <search>
+            <!-- Add your fields here -->
+            <field name="name" string="Nama atau Referensi" filter_domain="['|',('name','ilike',self),('ref','ilike', self)]"/>
+            <field name="ref"/>
+            <field name="umur"/>
+            <field name="jenis_kel"/>
+        </search>
+    </field>
+</record>
+<!-- hospital.patient action window -->
+<record id="hospital_patient_action" model="ir.actions.act_window">
+    <field name="name">Pasien</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">hospital.patient</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+        </p><p>
+            <!-- More details about what a user can do with this object will be OK --> 
+        
+        </p>
+    </field>
+</record>
+<menuitem
+    id="menu_pasien"
+    name="Patient" 
+    sequence="0"
+    parent="hospital_menu_master"
+    action="hospital_patient_action"/>
+
+    <!-- This Menu Item must have a parent and an action -->
     </data>
-    
 </odoo>

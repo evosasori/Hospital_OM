@@ -7,6 +7,8 @@ class HospitalPatient(models.Model):
     
     name = fields.Char(string='Nama Pasien')
     umur = fields.Integer(string='Umur')
+    ref = fields.Char(string='Referensi')
+    
     jenis_kel = fields.Selection(string='Jenis Kelamin', selection=[('laki', 'Laki - Laki'), ('perempuan', 'Perempuan'),])
     
     

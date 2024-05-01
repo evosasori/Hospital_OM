@@ -23,7 +23,6 @@ class RefKota(models.Model):
     keterangan = fields.Text(string='keterangan')
     kecamatan_ids = fields.One2many(comodel_name='ref.kecamatan', inverse_name='kota_id', string='Daftar kecamatan')
     
-    
 
 
 class RefKecamatan(models.Model):

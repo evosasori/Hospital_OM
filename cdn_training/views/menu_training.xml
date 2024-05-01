@@ -8,6 +8,7 @@
     <!-- This Menu Item Must have a parent -->
     <menuitem id="training_menu_categ" name="Training" parent="training_menu_root" sequence="40"/>
     <menuitem id="pengaturan_menu_categ" name="Master Data" parent="training_menu_root" sequence="50"/>
+    <menuitem id="training_menu_peserta" name="Data Peserta" parent="training_menu_categ" sequence="5"/>
     <menuitem id="wilayah_menu_categ" name="Data Wilayah" parent="pengaturan_menu_categ" sequence="30"/>
     
     </data>
