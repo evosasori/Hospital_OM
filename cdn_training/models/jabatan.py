@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 class Jabatan1(models.Model):
-    _name = 'jabatan1'
+    _name = 'jabatan'
     _description = 'Jabatan'
     
     name = fields.Char(string='Nama Jabatan')

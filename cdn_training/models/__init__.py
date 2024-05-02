@@ -6,4 +6,4 @@ from . import instruktur
 from . import wilayah
 from . import res_partner
 from . import peserta
-from . import jabatan1
+from . import jabatan

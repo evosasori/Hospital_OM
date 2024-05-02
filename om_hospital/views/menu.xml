@@ -9,8 +9,15 @@
 
 <menuitem
     id="hospital_menu_master"
-    name="Patient Details" 
+    name="Detail Pasien" 
     sequence="0"
+    parent="hospital_menu_root"
+    />
+
+<menuitem
+    id="hospital_menu_janji"
+    name="Janji Temu" 
+    sequence="10"
     parent="hospital_menu_root"
     />
 
