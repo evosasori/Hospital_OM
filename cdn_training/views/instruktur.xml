@@ -13,7 +13,7 @@
                     <field name="city"/>
                     <field name="mobile"/>
                     <field name="email"/>
-                    <field name="jabatan_staff"/>
+                    <field name="jabatan_id"/>
                     <!-- <field name="keahlian_ids" widget="many2many_tags"/> -->
                 </tree>
             </field>
@@ -25,6 +25,9 @@
             <field name="model">instruktur</field>
             <field name="arch" type="xml">
                 <form string="">
+                <header>
+                    <button string="Update Jabatan" name="action_update_jabatan" type="object" class="oe_highlight"/>
+                </header>
                     <sheet>
                     <field name="image_1920" widget="image" class="oe_avatar" style="margin-top:50px;" />
                         <group name="identitas" string="Identitas Struktur">
@@ -32,7 +35,7 @@
                             <field name="name"/>
                             <field name="street"/>
                             <field name="city"/>
-                            <field name="jabatan_id"/>
+                            <field name="jabatan_id" readonly="1"/>
                             <field name="jenis_jabatan" attrs="{'invisible' : True}"/>
                             <field name="jabatan_staff" attrs="{'invisible':[('jenis_jabatan','!=','staff')]}"/>
                         </group>

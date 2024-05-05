@@ -6,7 +6,7 @@
     <field name="name">appointment.view.tree</field>
     <field name="model">appointment</field>
     <field name="arch" type="xml">
-        <tree>
+        <tree delete="0">
             <!-- Add your fields here -->
             <field name="pasien_id"/>
             <field name="jenis_kel"/>
@@ -20,28 +20,53 @@
     <field name="name">appointment.view.form</field>
     <field name="model">appointment</field>
     <field name="arch" type="xml">
-        <form>
-            <sheet>
-            <group name="pasien" string="Data Pasien">
-                <group>
-                    <!-- Add your fields here -->
-            <field name="pasien_id"/>
-            <field name="jenis_kel"/>
-            <field name="waktu"/>
-            <field name="tanggal"/>
-                    
+            <form create="0" delete="0">
+            <header>
+            <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}" statusbar_visible="draft,on_konsultasi,selesai"/>
+            </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="priority" widget="priority" class="mr-3"/>
+                        </h1>
+                    </div>
+                <group name="pasien" string="Data Pasien">
+                        <group>
+                        <!-- Add your fields here -->
+                        <field name="pasien_id"/>
+                        <field name="ref" 
+                        help="anda akan diarahkan ke halaman pasien!" />
+                        <field name="jenis_kel"/>
+                        <field name="tanggal"/>
+                        
+                            </group>
+                        <group>
+                            <field name="waktu"/>
+                            <button string="Test" name="action_test" type="object" class="oe_highlight"/>
+                            <button string="Tombol Aksi" 
+                            name="%(om_hospital.hospital_patient_action)d" 
+                            class="oe_highlight" type="action" 
+                            confirm="Anda yakin ingin berpindahkea halaman data pasien ?" 
+                            help="Anda akan diarahkan ke halaman pasien!"/>
+                        </group> 
                 </group>
-                <group>
-
-                </group> 
-            </group>
-            </sheet>
-            <div class="oe_chatter">
-            <field name="message_follower_ids" groups="base.group_user"/>
-            <field name="activity_ids"/>
-            <field name="message_ids"/>
-            </div>
-        </form>
+                <notebook>
+                    <page name="resep" string="Resep Obat">
+                        <field name="resep" placeholder="Resep Obat"/>
+                        
+                    </page>
+                    <page name="farmasi" string="Farmasi">
+                        <group>
+                        </group>
+                    </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                <field name="message_follower_ids" groups="base.group_user"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+                </div>
+            </form>
     </field>
 </record>
 

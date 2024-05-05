@@ -26,7 +26,9 @@
                 <group>
                     <!-- Add your fields here -->
                     <field name="name"/>
+                    <field name="tanggal_lahir"/>
                     <field name="umur"/>
+                    <!-- <field name="janji_id"/>     -->
                 </group>
                 <group>
                     <field name="ref"/>
@@ -58,8 +60,8 @@
             <filter name="filterlaki" string="Laki - Laki" domain="[('jenis_kel', '=', 'laki')]" />
             <filter name="filterpr" string="Perempuan" domain="[('jenis_kel', '=', 'perempuan')]" />
             <separator/>
-            <filter name="filteranak" string="Anak - Anak" domain="[('umur', '&lt;=', 5)]" />
-            <separator/>
+            <!-- <filter name="filteranak" string="Anak - Anak" domain="[('umur', '&lt;=', 5)]" />
+            <separator/> -->
             <filter name="filteraktif" string="Tidak Aktif" domain="[('active', '=', False)]" />
             <group name="group_by_gender" string="Group By">
                 <filter name="Jenis_kel" string="Jenis Kelamin" context="{'group_by': 'jenis_kel'}" />
