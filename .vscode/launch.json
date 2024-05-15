@@ -18,6 +18,7 @@
                 //mendirek database "-d",
                 // "db_training",
                 "-u",
+                // "cdn_training",
                 "om_hospital",
             ],
             "cwd": "C://odoo//odoo16//server//",

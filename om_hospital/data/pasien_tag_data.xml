@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="pasien_tag_reguler" model="pasien.tag">
+        <field name="name">Reguler</field>
+    </record>
+    <record id="pasien_tag_vip" model="pasien.tag">
+        <field name="name">Vip</field>
+    </record>
+    <record id="pasien_tag_bpjs" model="pasien.tag">
+        <field name="name">BPJS</field>
+        <field name="active" eval="False"/> 
+    </record>
+</odoo>

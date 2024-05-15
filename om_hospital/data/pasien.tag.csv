@@ -1,0 +1,5 @@
+id,name,active
+pasien_tag_LV1,LV1,True
+pasien_tag_LV2,LV2,True
+pasien_tag_urgent,Urgent,True
+pasien_tag_nevermind,Never_Mind,False

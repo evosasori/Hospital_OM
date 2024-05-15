@@ -7,3 +7,4 @@ from . import wilayah
 from . import res_partner
 from . import peserta
 from . import jabatan
+from . import product_inherit

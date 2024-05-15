@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="product_product_training_inherit_module_name" model="ir.ui.view">
+            <field name="name">product.product.training.view.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="uom_po_id" position="after">
+                <field name="product_training"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="purchase_order_training_inherit_module_name" model="ir.ui.view">
+            <field name="name">purchase.order.training.view.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                    <field name="product_training"/>
+                </field>
+
+                <xpath expr="//field[@name='product_id']" position="attributes">    
+                    <attribute name="domain">[('product_training', '=', parent.product_training)]</attribute>
+                </xpath>
+
+
+            </field>
+        </record>
+        
+    </data>
+    
+</odoo>

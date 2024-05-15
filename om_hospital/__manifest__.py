@@ -19,18 +19,25 @@
     'version': '16.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail'],
+    'depends': ['base','mail','product'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'data/pasien_tag_data.xml',
+        'data/pasien.tag.csv',
         'views/templates.xml',
         'views/menu.xml',
         'views/pasien_perempuan.xml',
         'views/pasien_laki.xml',
         'views/appointment.xml',
         'views/patient.xml',
+        'views/pasien_tag.xml',
+        'wizard/batal_temu.xml',
+        'views/sequence.xml',
+        'views/odoo_playground.xml',
+        'views/config_setting.xml',
        
     ],
     # only loaded in demonstration mode

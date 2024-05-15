@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+    <!-- pasien.tag tree view -->
+    <record id="pasien_tag_view_tree" model="ir.ui.view">
+        <field name="name">Pasien_Tag</field>
+        <field name="model">pasien.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="warna" widget="color_picker"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+        <!-- pasien.tag form view -->
+        <record id="pasien_tag_view_form" model="ir.ui.view">
+            <field name="name">pasien.tag.view.form</field>
+            <field name="model">pasien.tag</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                        <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        </group>
+                        <group>
+                        <field name="warna" widget="color_picker"/>
+                        <field name="warna2" widget="color" groups="base.group_user"/>
+                        <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    <!-- pasien.tag action window -->
+    <record id="pasien_tag_action" model="ir.actions.act_window">
+        <field name="name">Tag Pasien</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pasien.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p><p>
+                <!-- More details about what a user can do with this object will be OK --> 
+            
+            </p>
+        </field>
+    </record>
+<menuitem
+    id="menu_tag_pasien"
+    name="Tag" 
+    sequence="0"
+    parent="menu_konfigurasi"
+    action="pasien_tag_action"/>
+    </data>
+    
+</odoo>

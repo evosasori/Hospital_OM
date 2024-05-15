@@ -9,7 +9,9 @@ class TrainingCourse(models.Model):
     name = fields.Char(string='Nama Kursus', required=True)
     description = fields.Text(string='Keterangan')
     user_id = fields.Many2one(comodel_name='res.users', string='Penanggung Jawab')
-    session_line = fields.One2many(comodel_name='training.session', inverse_name='course_id', string='Sesi Training') 
+    session_line = fields.One2many(comodel_name='training.session', inverse_name='course_id', string='Sesi Training')
+    product_ids = fields.Many2many(comodel_name='product.product', string='Peralatan/Konsumsi', domain=[('product_training','!=','non_training')])
+    
     
     
     
@@ -34,6 +36,7 @@ class TrainingSession(models.Model):
     jml_peserta = fields.Integer(compute='_compute_jml_peserta', string='Jumlah Peserta', tracking=True)
     state  = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('progress', 'Sedang Berlangsung'),('done', 'Selesai')], default='draft', tracking=True)
     end_date = fields.Date(compute='_compute_end_date', string='End Date')
+    
     
     @api.depends('start_date', 'duration')
     def _compute_end_date(self):

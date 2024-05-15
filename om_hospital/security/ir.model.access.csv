@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access.hospital.patient,access_hospital_patient,om_hospital.model_hospital_patient,base.group_user,1,1,1,1
 access.appointment,access_appointment,om_hospital.model_appointment,base.group_user,1,1,1,1
+access.appointment.line,access_appointment_line,om_hospital.model_appointment_pharmacy_lines,base.group_user,1,1,1,1
+access.tag.pasien,access_tag_pasien,om_hospital.model_pasien_tag,base.group_user,1,1,1,1
+access.batal.temu.wizard,access_batal_temu_wizard,om_hospital.model_batal_temu_wizard,base.group_user,1,1,1,1
+access.odoo.playground,access_odoo_playground,om_hospital.model_odoo_playground,base.group_user,1,1,1,1

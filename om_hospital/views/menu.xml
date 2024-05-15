@@ -20,5 +20,19 @@
     sequence="10"
     parent="hospital_menu_root"
     />
+<!-- This Menu Item must have a parent and an action -->
+<menuitem 
+    id="hospital_menu__batal_janji" 
+    name="batalkan Pertemuan" 
+    parent="hospital_menu_janji" 
+    action="batal_temu_wizard_action" 
+    sequence="20"/>
+
+<menuitem
+    id="menu_konfigurasi"
+    name="Konfigurasi" 
+    sequence="20"
+    parent="hospital_menu_root"
+    />
 
 </odoo>
