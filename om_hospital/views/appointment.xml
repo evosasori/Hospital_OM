@@ -36,8 +36,7 @@
             type="action" />
 
             <groupby name="pasien_id">
-                <button String="Edit" name="edit" type="edit" decoration-warning="True" />
-                <button string="Klik Disini" name="action_test" type="object"/>
+                <button string="Tandai Selesai" name="action_selesai" type="object"/>
             </groupby>
         </tree>
     </field>
@@ -78,10 +77,10 @@
                         <field name="ref" readonly="1" force_save="1"/>
                         <field name="dokter_id" widget="many2one_avatar"/>
                         <field name="jenis_kel" help="Pilih"/>
-                        <field name="tanggal" help="Tanggal Booking" default_focus="1"/>
-                        
+                        <field name="operation_id"/>
                             </group>
                         <group>
+                        <field name="tanggal" help="Tanggal Booking" default_focus="1"/>
                             <field name="sembunyikan_harga"/>
                             <field name="waktu"/>
                             <button string="Test" name="action_test" type="object" class="oe_highlight" groups="base.group_no_one"/>

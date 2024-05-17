@@ -6,3 +6,4 @@ from . import appointment
 from . import pasien_tag
 from . import odoo_playground
 from . import test_setting
+from . import operation

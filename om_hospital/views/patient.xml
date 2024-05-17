@@ -10,7 +10,8 @@
             <!-- Add your fields here -->
             <field name="name" string="Nama"/>
             <field name="ref"/>
-            <field name="umur"/>
+            <field name="umur" avg="Rata - rata umur"/>
+            <field name="jumlah_janji" sum="Jumlah Pertemuan"/>
             <field name="jenis_kel"/>
             <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'warna'}"/>
         </tree>
@@ -23,6 +24,16 @@
     <field name="arch" type="xml">
         <form>
             <sheet>
+            <field name="is_ultah" invisible="1"/>
+            <div class="alert alert-info text-center o_form_header" role="alert" attrs="{'invisible':[('is_ultah','!=',True)]}">
+            <div>
+            <strong>Hari Ini adalah ulang tahun anda, </strong>
+            </div>
+            <div>
+            Selamat ulang tahun <field name="name" readonly="1"/>
+            </div>
+            <a class="close" data-dismiss="alert" href="#">[close]</a>
+            </div>
         <field name="profil" widget="image" class="oe_avatar"/>
         <div class="oe_title">
             <h4>

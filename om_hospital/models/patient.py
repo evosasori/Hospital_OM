@@ -1,5 +1,6 @@
 from odoo import fields, models, api,_
 from datetime import date
+from datetime import datetime
 from odoo.exceptions import ValidationError
 from dateutil import relativedelta
 
@@ -9,7 +10,7 @@ class HospitalPatient(models.Model):
     _description = 'Hospital Patient'
     
     name = fields.Char(string='Nama Pasien',tracking=True, default="pasien")
-    tanggal_lahir = fields.Date(string='Tanggal Lahir')
+    tanggal_lahir = fields.Date(string='Tanggal Lahir', required=True)
     umur = fields.Integer(string='Umur',compute='_compute_usia', inverse='_inverse_umur', tracking=True, help='Otomatis terisi saat mengganti tanggal lahir',search='_cari_umur')
     ref = fields.Char(string='Referensi') 
     jenis_kel = fields.Selection(
@@ -26,6 +27,7 @@ class HospitalPatient(models.Model):
     parent = fields.Char(string='Orang Tua')
     marital_status = fields.Selection(string='Status Pernikahan', selection=[('married', 'Menikah'), ('single', 'Belum Menikah')],tracking=True, default="single")
     partner_name = fields.Char(string='Nama Pasangan') 
+    is_ultah = fields.Boolean(compute='_compute_is_ultah', string='is_ultah')
     
     @api.depends('appointment_ids')
     def _compute_jumlah_janji(self):
@@ -70,9 +72,15 @@ class HospitalPatient(models.Model):
                 
     @api.depends('umur')
     def _inverse_umur(self):
-        today = date.today()
+        today = datetime.today()
         for rec in self:
-            rec.tanggal_lahir = today - relativedelta.relativedelta(years=rec.umur)
+            # rec.tanggal_lahir = today - relativedelta.relativedelta(years=rec.umur)
+            tanggal = rec.tanggal_lahir.day
+            bulan = rec.tanggal_lahir.month
+            hitung = today.year - rec.umur 
+            rec.tanggal_lahir= f"{hitung}-{bulan}-{tanggal}"
+            #khusus d-m-y tanggal function
+            
     
     def _cari_umur(self, operator, value):
         tanggal_lahir = date.today() - relativedelta.relativedelta(years=value)
@@ -90,7 +98,19 @@ class HospitalPatient(models.Model):
         print('Button Clicked')
         return
     
-                
-                
+    def action_selesai(self):
+        for rec in self:
+            self.env['appointment'].search([('pasien_id', '=', rec.id)]).state = 'selesai'
+        
+    def _compute_is_ultah(self):
+        is_ultah = False
+        for rec in self:
+            hari_ini = date.today()
+            if rec.tanggal_lahir:
+                if rec.tanggal_lahir.month == hari_ini.month and rec.tanggal_lahir.day == hari_ini.day:
+                    is_ultah = True
+                else:
+                    is_ultah = False
+            rec.is_ultah = is_ultah
     
     

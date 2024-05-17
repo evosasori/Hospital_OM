@@ -38,6 +38,7 @@
         'views/sequence.xml',
         'views/odoo_playground.xml',
         'views/config_setting.xml',
+        'views/operation.xml',
        
     ],
     # only loaded in demonstration mode

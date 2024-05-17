@@ -5,12 +5,15 @@ class HospitalAppointment(models.Model):
     _name = 'appointment'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Janji Temu'
+    _order = 'id desc'
     
     name = fields.Char(string='ID Janji')
     pasien_id = fields.Many2one(comodel_name='hospital.patient', string='Pasien',ondelete = "cascade")
     jenis_kel = fields.Selection(related='pasien_id.jenis_kel')
     waktu = fields.Datetime('jam', default=fields.Datetime.now)
     tanggal = fields.Date(string='Tanggal', default=fields.Date.context_today)
+    operation_id = fields.Many2one(comodel_name='hospital.operation', string='Operasi')
+    
     ref = fields.Char(
         string='Referensi', 
         help="Record referensi !"

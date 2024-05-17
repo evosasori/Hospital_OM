@@ -29,9 +29,11 @@ class BatalTemuWizard(models.TransientModel):
             print("Allowed", allowed)
             print("Date saat Ini",today)
             raise ValidationError(_("Sorry, the cancellation is not allowed in this time"))
-        else:
-            raise ValidationError(_("Dua, the cancellation is not allowed in this time"))
-        # return
-        # for rec in self:
-        #     rec.appointment_id.state = "batal"
+        # else:
+        #     raise ValidationError(_("Dua, the cancellation is not allowed in this time"))
+        self.appointment_id.state = "batal"
+        return {
+            'type' : 'ir.action.client',
+            'tag' : 'reload',
+        }
     
